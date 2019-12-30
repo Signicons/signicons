@@ -1,0 +1,12 @@
+multipass: true
+full: true
+
+plugins:
+  - removeDoctype: true
+  - removeXMLProcInst: true
+  - removeViewBox: false
+  - convertPathData: true
+
+js2svg:
+	pretty: true
+	indent: '    '
