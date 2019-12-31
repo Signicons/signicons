@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title><%= fontFamilyName %></title>
+		<style>html{box-sizing:border-box;font-family:"Helvetica Neue",Arial,sans-serif;}*,*:before,*:after{box-sizing:inherit;}body{margin:0;padding:20px;color:#222;}h1{margin:0 0 20px;font-size:32px;line-height:1.5;font-weight:normal;}small{font-size:12px;padding-left:20px;color:#999;}.icons{margin-bottom:40px;}.icons__item{width:20%;padding:0.75rem;border-bottom:1px solid #ddd;display:inline-flex;align-items:center;flex-wrap:wrap;}.icons__item:hover{color:slateblue;}.icons__item>span{margin-left:12px;font-size:14px;line-height:20px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;}<%= styles %></style>
+	</head>
+	<body>
+		<h1><%= fontFamilyName %><% if (version) { %><small>version <%= version %></small><% } %><small><%= glyphs.length %> icons</small></h1>
+		<div class="icons" id="icons">
+			<% for (var glyphIdx = 0; glyphIdx < glyphs.length; glyphIdx++) { var glyph = glyphs[glyphIdx] %>
+				<div class="icons__item" data-name="<%= glyph %>"><i class="<%= baseClass %> <%= classPrefix %><%= glyph %>"></i><span><%= classPrefix %><%= glyph %></span></div>
+			<% } %>
+		</div>
+		<% if (addLigatures) { %>
+		<div class="ligature-icons" style="display:none">
+			<% for (var glyphIdx = 0; glyphIdx < glyphs.length; glyphIdx++) { var glyph = glyphs[glyphIdx]; %>
+				<%= glyph %>
+			<% } %>
+		</div>
+		<% } %>
+		<h1>Usage</h1>
+		<pre><code>&lt;i class=&quot;<%= baseClass ? baseClass + ' ' : '' %><%= classPrefix %><span id="name">name</span>&quot;&gt;&lt;/i&gt;</code></pre>
+		<% if (addLigatures) { %>
+		<pre><code>&lt;i class=&quot;ligature-icons&quot;&gt;<span id="name2">name</span>&lt;/i&gt;</code></pre>
+		<% } %>
+		<script>
+		(function() {
+			document.getElementById('icons').onclick = function(e) {
+				e = e || window.event;
+				var name = e.target.getAttribute('data-name') || e.target.parentNode.getAttribute('data-name');
+				document.getElementById('name').innerHTML = name;
+				<% if (addLigatures) { %>document.getElementById('name2').innerHTML = name;<% } %>
+			}
+		})();
+		</script>
+	</body>
+</html>

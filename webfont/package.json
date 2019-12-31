@@ -1,0 +1,12 @@
+{
+	"name": "@signicons/signicons-webfont",
+	"version": "1.0.0",
+	"main": "dist/signicons-webfont.css",
+	"scripts": {
+		"build": "grunt"
+	},
+	"devDependencies": {
+		"grunt": "1.0.4",
+		"grunt-webfont": "1.7.2"
+	}
+}

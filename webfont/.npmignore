@@ -1,0 +1,7 @@
+demo
+node_modules
+scripts
+templates
+Gruntfile.js
+.DS_Store
+.vscode

@@ -4,7 +4,9 @@
   "description": "Signicons - SVG icon files",
   "main": "index.js",
   "scripts": {
-    "optimize-svg": "npx svgo --config ./.svgo.yml -f ./raw -o ./optimized"
+    "build":"npm run optimize-svg && npm run metadata",
+    "optimize-svg": "svgo --config ./.svgo.yml -f ./raw -o ./optimized",
+    "metadata": "node scripts/index.js"
   },
   "keywords": [
     "Signicons",
@@ -14,6 +16,7 @@
   "author": "Goran Tomičić",
   "license": "MIT",
   "devDependencies": {
+    "junk": "^3.1.0",
     "svgo": "^1.3.2"
   }
 }

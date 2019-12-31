@@ -1,0 +1,32 @@
+/* Signicons - v<%= version %> */
+
+@font-face {
+	font-family: "<%= fontFamilyName %>";
+	<% if (fontSrc1) { %>src: <%= fontSrc1 %>;<% } %>
+	src: <%= fontSrc2 %>;
+	font-weight: normal;
+	font-style: normal;
+}
+
+.<%= baseClass %> {
+	font-family: "<%= fontFamilyName %>";
+	font-weight: normal;
+	font-style: normal;
+	font-size: 24px;
+	display: inline-block;
+	line-height: 1;
+	text-transform: none;
+	letter-spacing: normal;
+	word-wrap: normal;
+	white-space: nowrap;
+	direction: ltr;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+	-moz-osx-font-smoothing: grayscale;
+	<% if (addLigatures) { %>font-feature-settings: 'liga';
+	-webkit-font-feature-settings: 'liga';<% } %>
+}
+<% if (!addLigatures) { %>
+<% for (var glyphIdx = 0; glyphIdx < glyphs.length; glyphIdx++) { %>.<%= classPrefix %><%= glyphs[glyphIdx] %>:before { content: "\<%= codepoints[glyphIdx] %>"; } 
+<% } %>
+<% } %>
