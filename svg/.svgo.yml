@@ -8,4 +8,4 @@ plugins:
   - convertPathData: true
 
 js2svg:
-	pretty: true
+  pretty: true
